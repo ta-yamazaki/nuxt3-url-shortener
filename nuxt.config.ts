@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-05-15',
-  devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/icon']
+    devtools: {enabled: true},
+    modules: ['@nuxt/icon'],
+    css: ['assets/scss/index.scss'],
+    nitro: {},
+    app: {
+        head: {
+            script: [
+                {src: 'https://accounts.google.com/gsi/client',},
+            ],
+        }
+    },
 })

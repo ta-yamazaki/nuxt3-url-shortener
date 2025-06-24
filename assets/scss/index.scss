@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+@use "bulma/sass/utilities/derived-variables.scss" with (
+   $custom-colors: (
+    'primary': rgb(0,198,140),
+    'danger': rgb(225,69,3),
+  ),
+);
+
+@use "bulma/versions/bulma-no-dark-mode.scss" as *;

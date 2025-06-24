@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 認証済みユーザーのみ許可
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // URLドキュメント（自分のデータだけ許可）
+    match /urls/{urlId} {
+      allow read, write, update, delete: if request.auth != null && request.auth.uid == resource.data.uid;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+    }
+
+    // デフォルト deny（上記に一致しないもの）
+    match /{document=**} {
+      allow read, write: if false;
+    }
+   }
+}

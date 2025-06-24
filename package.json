@@ -4,17 +4,28 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --open",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "emulate": "firebase emulators:start --only firestore,auth --import=./.saved-data --export-on-exit",
+    "hostingPreview": "firebase hosting:channel:deploy preview_user",
+    "deploy": "firebase deploy",
+    "deploy:hosting": "firebase deploy",
+    "firestore:indexes": "firebase firestore:indexes > firestore.indexes.json"
   },
   "dependencies": {
-    "@nuxt/eslint": "^1.4.1",
     "@nuxt/icon": "^1.13.0",
-    "eslint": "^9.29.0",
+    "firebase": "^11.9.1",
     "nuxt": "^3.17.5",
     "vue": "^3.5.16",
     "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "bulma": "^1.0.4",
+    "globals": "^16.2.0",
+    "node-sass": "^9.0.0",
+    "sass": "^1.89.2"
   }
 }
